@@ -55,11 +55,22 @@ void write(char *buf, unsigned int len){
     fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
 }
 
+void cls(){
+    char *fb = (char *) 0x000B8000; 
+    for(unsigned int t = 0; t < 2000; t++){
+        fb[0] = ' ';
+        fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
+        fb += 0x00000002;
+    }
+    fb_move_cursor(0);
+}
+
 void entry(){
     // fb_move_cursor(0);
     // fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     // fb_move_cursor(1);
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
+    cls();
     char test[] = "GHOST OS v0.0.0.1";
     write(test, sizeof(test));
     fb_move_cursor(189);
