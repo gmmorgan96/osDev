@@ -15,6 +15,12 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
 
+void fb_write_cell_two(unsigned int i, char c, unsigned char fg, unsigned char bg)
+{   char *fb = (char *) 0x000B8010;
+    fb[i] = c;
+    fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
+}
+
 // int sum_of_three(int arg1, int arg2, int arg3)
 // {
 //     return arg1 + arg2 + arg3;
@@ -34,7 +40,7 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
 // }
 void entry(){
     fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
-    fb_write_cell(1, 'B', FB_GREEN, FB_DARK_GREY);
+    fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
     while(1);
 }
 
