@@ -44,7 +44,7 @@ void write(unsigned int i, char c, unsigned char fg, unsigned char bg){
     char *fb = (char *) 0x000B8000; 
     fb[i] = 'A';
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
-    *fb += 0x00000002;
+    fb += 0x00000002;
     fb[i] = c;
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
