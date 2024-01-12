@@ -54,7 +54,6 @@ void entry(){
     // fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     // fb_move_cursor(1);
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
-    int ret;
     write(0, 'B', FB_GREEN, FB_DARK_GREY);
     fb_move_cursor(2);
     while(1);
