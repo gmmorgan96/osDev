@@ -49,8 +49,8 @@ void entry(){
     while(1);
 }
 
-int write(char *buf, unsigned int len){
-    // writes to screen at point 
-    return 1;
-}
+// int write(char *buf, unsigned int len){
+//     // writes to screen at point 
+//     return 1;
+// }
 
