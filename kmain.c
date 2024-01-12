@@ -59,7 +59,7 @@ void entry(){
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
     char test[] = "GHOST OS v0.0.0.1";
     write(test, sizeof(test));
-    fb_move_cursor(89);
+    fb_move_cursor(189);
     while(1);
 }
 
