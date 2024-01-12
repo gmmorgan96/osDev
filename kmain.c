@@ -15,12 +15,10 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
 
-int sum_of_three(int arg1, int arg2, int arg3)
-{
-    fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
-    fb_write_cell(1, 'B', FB_GREEN, FB_DARK_GREY);
-    return arg1 + arg2 + arg3;
-}
+// int sum_of_three(int arg1, int arg2, int arg3)
+// {
+//     return arg1 + arg2 + arg3;
+// }
 
 /** fb_move_cursor:
 * Moves the cursor of the framebuffer to the given position
@@ -29,12 +27,14 @@ int sum_of_three(int arg1, int arg2, int arg3)
 */
 void fb_move_cursor(unsigned short pos)
 {
-    outb(FB_COMMAND_PORT, FB_HIGH_BYTE_COMMAND);
-    outb(FB_DATA_PORT, ((pos >> 8) & 0x00FF));
-    outb(FB_COMMAND_PORT, FB_LOW_BYTE_COMMAND);
-    outb(FB_DATA_PORT, pos & 0x00FF);
+    // outb(FB_COMMAND_PORT, FB_HIGH_BYTE_COMMAND);
+    // outb(FB_DATA_PORT, ((pos >> 8) & 0x00FF));
+    // outb(FB_COMMAND_PORT, FB_LOW_BYTE_COMMAND);
+    // outb(FB_DATA_PORT, pos & 0x00FF);
 }
 void entry(){
+    fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
+    fb_write_cell(1, 'B', FB_GREEN, FB_DARK_GREY);
     while(1);
 }
 
