@@ -6,7 +6,7 @@ CHECKSUM     equ -MAGIC_NUMBER  ; calculate the checksum
                                 ; (magic number + checksum + flags should equal 0)
 KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
 ; The assembly code
-.extern sum_of_three           ; the function sum_of_three is defined elsewhere
+extern sum_of_three           ; the function sum_of_three is defined elsewhere
 
 section .text:                  ; start of the text (code) section
 
