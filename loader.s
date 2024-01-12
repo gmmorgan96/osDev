@@ -7,6 +7,7 @@ CHECKSUM     equ -MAGIC_NUMBER  ; calculate the checksum
 KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
 ; The assembly code
 extern sum_of_three           ; the function sum_of_three is defined elsewhere
+extern fb_write_cell
 
 section .text:                  ; start of the text (code) section
 
@@ -22,6 +23,8 @@ loader:                         ; the loader label (defined as entry point in li
     push dword 276 ; arg2
     push dword 14 ; arg1
     call sum_of_three ; call the function, the result will be in eax
+    fb_write_cell(0, ’A’, 2, 8);
+
 .loop:
     jmp .loop                   ; loop forever
 
