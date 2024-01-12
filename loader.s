@@ -18,7 +18,16 @@ align 4                         ; the code must be 4 byte aligned
 
 loader:                         ; the loader label (defined as entry point in linker script)
     mov eax, 0xCAFEBABE         ; place the number 0xCAFEBABE in the register eax
+    call cls
     call entry ; call the function, the result will be in eax
+
+cls:
+  pusha
+  mov ah, 0x00
+  mov al, 0x03  ; text mode 80x25 16 colours
+  int 0x10
+  popa
+  ret
 
 .loop:
     jmp .loop                   ; loop forever
