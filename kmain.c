@@ -10,7 +10,7 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
 
 int sum_of_three(int arg1, int arg2, int arg3)
 {
-    fb_write_cell(0, "A", FB_GREEN, FB_DARK_GREY);
+    fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     return arg1 + arg2 + arg3;
 }
 
