@@ -7,9 +7,9 @@ CHECKSUM     equ -MAGIC_NUMBER  ; calculate the checksum
 KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
 ; The assembly code
 section .text:                  ; start of the text (code) section
-external sum_of_three           ; the function sum_of_three is defined elsewhere
 
 align 4                         ; the code must be 4 byte aligned
+    external sum_of_three           ; the function sum_of_three is defined elsewhere
     dd MAGIC_NUMBER             ; write the magic number to the machine code,
     dd FLAGS                    ; the flags,
     dd CHECKSUM                 ; and the checksum
