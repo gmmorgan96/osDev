@@ -58,7 +58,7 @@ void entry(){
     // fb_move_cursor(1);
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
     char test[] = "Hello";
-    write(*test, sizeof(test));
+    write(test, sizeof(test));
     fb_move_cursor(2);
     while(1);
 }
