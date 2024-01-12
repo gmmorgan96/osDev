@@ -42,11 +42,15 @@ void fb_move_cursor(unsigned short pos)
 void write(unsigned int i, char c, unsigned char fg, unsigned char bg){
     // writes to screen at point 
     char *fb = (char *) 0x000B8000; 
-    fb[i] = 'A';
-    fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
-    fb += 0x00000002;
-    fb[i] = c;
-    fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
+    char test[] = "Hello";
+    for(int t = 0; t < sizeof(test); t++){
+        fb[i] = test[t];
+        fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
+        fb += 0x00000002;
+    }
+    
+//     fb[i] = c;
+//     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
 
 void entry(){
