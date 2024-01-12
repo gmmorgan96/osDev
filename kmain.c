@@ -31,13 +31,13 @@ void fb_write_cell_two(unsigned int i, char c, unsigned char fg, unsigned char b
 *
 * @param pos The new position of the cursor
 */
-// void fb_move_cursor(unsigned short pos)
-// {
-//     // outb(FB_COMMAND_PORT, FB_HIGH_BYTE_COMMAND);
-//     // outb(FB_DATA_PORT, ((pos >> 8) & 0x00FF));
-//     // outb(FB_COMMAND_PORT, FB_LOW_BYTE_COMMAND);
-//     // outb(FB_DATA_PORT, pos & 0x00FF);
-// }
+void fb_move_cursor(unsigned short pos)
+{
+    outb(FB_COMMAND_PORT, FB_HIGH_BYTE_COMMAND);
+    outb(FB_DATA_PORT, ((pos >> 8) & 0x00FF));
+    outb(FB_COMMAND_PORT, FB_LOW_BYTE_COMMAND);
+    outb(FB_DATA_PORT, pos & 0x00FF);
+}
 void entry(){
     fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
