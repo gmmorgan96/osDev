@@ -41,7 +41,16 @@ void fb_move_cursor(unsigned short pos)
 void entry(){
     fb_move_cursor(0);
     fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
+    wait(100000000);
+    fb_move_cursor(1);
     fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
+    wait(100000000);
+    fb_move_cursor(2);
     while(1);
+}
+
+int write(char *buf, unsigned int len){
+    // writes to screen at point 
+    return 1;
 }
 
