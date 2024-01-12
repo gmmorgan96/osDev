@@ -152,7 +152,7 @@ void entry(){
     cls();
     char test[] = "GHOST OS v0.0.0.1";
     write(test, sizeof(test));
-    write_serial(test, sizeof(test));
+    print_f(test, sizeof(test));
     fb_move_cursor(80);
     while(1);
 }
