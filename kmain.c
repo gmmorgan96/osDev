@@ -16,7 +16,7 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
 }
 
 void fb_write_cell_two(unsigned int i, char c, unsigned char fg, unsigned char bg)
-{   char *fb = (char *) 0x000B8008;
+{   char *fb = (char *) 0x000B8002;
     fb[i] = c;
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
