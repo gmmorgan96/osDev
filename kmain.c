@@ -1,7 +1,10 @@
 /* The C function */
+#define FB_GREEN 2
+#define FB_DARK_GREY 8
+
 int sum_of_three(int arg1, int arg2, int arg3)
 {
-    fb_write_cell(0, "A", 2, 8);
+    fb_write_cell(0, "A", FB_GREEN, FB_DARK_GREY);
     return arg1 + arg2 + arg3;
 }
 
