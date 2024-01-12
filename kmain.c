@@ -42,7 +42,7 @@ void fb_move_cursor(unsigned short pos)
 void write(unsigned int i){
     // writes to screen at point 
     char *fb = (char *) 0x000B8000; 
-    char test[] = "Hello";
+    char test[] = 'Hello';
     for(unsigned int t = 0; t < sizeof(test); t++){
         fb[i] = test[t];
         fb[i + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
