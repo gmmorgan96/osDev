@@ -6,8 +6,7 @@ CHECKSUM     equ -MAGIC_NUMBER  ; calculate the checksum
                                 ; (magic number + checksum + flags should equal 0)
 KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
 ; The assembly code
-extern sum_of_three           ; the function sum_of_three is defined elsewhere
-extern fb_write_cell
+extern entry           ; the function sum_of_three is defined elsewhere
 
 section .text:                  ; start of the text (code) section
 
@@ -19,10 +18,7 @@ align 4                         ; the code must be 4 byte aligned
 
 loader:                         ; the loader label (defined as entry point in linker script)
     mov eax, 0xCAFEBABE         ; place the number 0xCAFEBABE in the register eax
-    push dword 398 ; arg3
-    push dword 276 ; arg2
-    push dword 14 ; arg1
-    call sum_of_three ; call the function, the result will be in eax
+    call entry ; call the function, the result will be in eax
 
 .loop:
     jmp .loop                   ; loop forever
