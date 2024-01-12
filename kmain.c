@@ -130,16 +130,18 @@ int serial_is_transmit_fifo_empty(unsigned int com)
     return inb(SERIAL_LINE_STATUS_PORT(com)) & 0x20;
 }
 
+void write_serial(char a){
+    while (serial_is_transmit_fifo_empty(SERIAL_COM1_BASE) == 0);
+    outb(SERIAL_COM1_BASE, a);
+}
+
 void print_f(char *buf, unsigned int len){
     for(unsigned int t = 0; t < len; t++){
         write_serial(buf[t]);
     }
 }
 
-void write_serial(char a){
-    while (serial_is_transmit_fifo_empty(SERIAL_COM1_BASE) == 0);
-    outb(SERIAL_COM1_BASE, a);
-}
+
 
 void entry(){
     // fb_move_cursor(0);
