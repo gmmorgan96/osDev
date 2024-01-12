@@ -1,6 +1,6 @@
 /* The C function */
-#define FB_GREEN 2
-#define FB_DARK_GREY 8
+#define FB_GREEN 0
+#define FB_DARK_GREY 15
 #include "io.h"
 /* The I/O ports */
 #define FB_COMMAND_PORT 0x3D4
@@ -57,7 +57,7 @@ void entry(){
     // fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     // fb_move_cursor(1);
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
-    char test[] = "Hello";
+    char test[] = "GHOST OS v0.0.0.1";
     write(test, sizeof(test));
     while(1);
 }
