@@ -55,7 +55,7 @@ int write(char *buf, unsigned int len, unsigned int i, char c, unsigned char fg,
     fb[i] = 'A';
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
     *fb += 0x00000002;
-    fb[i] = 'B';
+    fb[i] = c;
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
     return 1;
 }
