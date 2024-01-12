@@ -23,7 +23,6 @@ loader:                         ; the loader label (defined as entry point in li
     push dword 276 ; arg2
     push dword 14 ; arg1
     call sum_of_three ; call the function, the result will be in eax
-    @ call fb_write_cell(0, A, 2, 8);
 
 .loop:
     jmp .loop                   ; loop forever
