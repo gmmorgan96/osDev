@@ -47,7 +47,7 @@ void write(char *buf, unsigned int len){
         fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
         fb += 0x00000002;
     }
-    
+    fb_move_cursor(len);
 //     fb[i] = c;
 //     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
@@ -59,7 +59,6 @@ void entry(){
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
     char test[] = "Hello";
     write(test, sizeof(test));
-    fb_move_cursor(2);
     while(1);
 }
 
