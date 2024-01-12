@@ -50,6 +50,9 @@ void write(char *buf, unsigned int len){
     fb_move_cursor(len--);
 //     fb[i] = c;
 //     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
+    fb = (char *) 0x000B8108;
+    fb[0] = 'B';
+    fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
 }
 
 void entry(){
