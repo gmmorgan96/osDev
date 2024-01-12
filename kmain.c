@@ -39,7 +39,7 @@ void fb_move_cursor(unsigned short pos)
     outb(FB_DATA_PORT, pos & 0x00FF);
 }
 
-int write(unsigned int i, char c, unsigned char fg, unsigned char bg){
+void write(unsigned int i, char c, unsigned char fg, unsigned char bg){
     // writes to screen at point 
     char *fb = (char *) 0x000B8000; 
     fb[i] = 'A';
@@ -47,7 +47,6 @@ int write(unsigned int i, char c, unsigned char fg, unsigned char bg){
     *fb += 0x00000002;
     fb[i] = c;
     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
-    return 1;
 }
 
 void entry(){
@@ -56,7 +55,7 @@ void entry(){
     // fb_move_cursor(1);
     // fb_write_cell_two(0, 'B', FB_GREEN, FB_DARK_GREY);
     int ret;
-    ret = write(0, 'B', FB_GREEN, FB_DARK_GREY);
+    write(0, 'B', FB_GREEN, FB_DARK_GREY);
     fb_move_cursor(2);
     while(1);
 }
