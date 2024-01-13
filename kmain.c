@@ -61,6 +61,41 @@ void serial_configure_baud_rate(unsigned short com, unsigned short divisor)
     divisor & 0x00FF);
 }
 
+#define PIC1_PORT_A 0x20
+#define PIC2_PORT_A 0xA0
+/* The PIC interrupts have been remapped */
+#define PIC1_START_INTERRUPT 0x20
+#define PIC2_START_INTERRUPT 0x28
+#define PIC2_END_INTERRUPT PIC2_START_INTERRUPT + 7
+#define PIC_ACK 0x20
+/** pic_acknowledge:
+* Acknowledges an interrupt from either PIC 1 or PIC 2.
+*
+* @param num The number of the interrupt
+*/
+void pic_acknowledge(unsigned int interrupt)
+{
+    if (interrupt < PIC1_START_INTERRUPT || interrupt > PIC2_END_INTERRUPT) {
+        return;
+    }
+    if (interrupt < PIC2_START_INTERRUPT) {
+        outb(PIC1_PORT_A, PIC_ACK);
+    } else {
+        outb(PIC2_PORT_A, PIC_ACK);
+    }
+}
+
+#define KBD_DATA_PORT 0x60
+/** read_scan_code:
+* Reads a scan code from the keyboard
+*
+* @return The scan code (NOT an ASCII character!)
+*/
+unsigned char read_scan_code(void)
+{
+    return inb(KBD_DATA_PORT);
+}
+
 /** serial_configure_line:
 * Configures the line of the given serial port. The port is set to have a
 * data length of 8 bits, no parity bits, one stop bit and break control
@@ -99,11 +134,6 @@ void write(char *buf, unsigned int len){
         fb += 0x00000002;
     }
     fb_move_cursor(len--);
-//     fb[i] = c;
-//     fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
-    fb = (char *) 0x000B8108;
-    fb[0] = 'B';
-    fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
 }
 
 void cls(){
