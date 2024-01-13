@@ -18,7 +18,7 @@ inb:
     in al, dx           ; read a byte from the I/O port and store it in the al register
     ret                 ; return the read byte
 
-%macro no_error_code_interrupt_handler_%1
+%macro no_error_code_interrupt_handler_0
 global interrupt_handler_%1
 interrupt_handler_%1:
     push dword 0                    ; push 0 as error code
