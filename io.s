@@ -7,6 +7,7 @@ global inb
                         ; inb - returns a byte from the given I/O port
                         ; stack: [esp + 4] The address of the I/O port
                         ; [esp ] The return address
+extern interrupt_handler           ; the function sum_of_three is defined elsewhere
 outb:
     mov al, [esp + 8]   ; move the data to be sent into the al register
     mov dx, [esp + 4]   ; move the address of the I/O port into the dx register
