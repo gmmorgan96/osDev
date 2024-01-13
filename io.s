@@ -26,7 +26,7 @@ inb:
 
 load_idt:
     mov eax, [esp+4]    ; load the address of the IDT into register eax
-    lidt eax            ; load the IDT
+    lgdt eax            ; load the IDT
     ret                 ; return to the calling function
 
 %macro no_error_code_interrupt_handler 1
