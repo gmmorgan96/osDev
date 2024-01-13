@@ -158,7 +158,8 @@ struct stack_state {
 
 // }
 void interrupt_handler(){
-
+    char test[] = "GHOST OS Test";
+    write(test, sizeof(test));
 }
 
 
