@@ -7,10 +7,6 @@ global inb
                         ; inb - returns a byte from the given I/O port
                         ; stack: [esp + 4] The address of the I/O port
                         ; [esp ] The return address
- global load_idt
-                        ; load_idt - Loads the interrupt descriptor table (IDT).
-                        ; stack: [esp + 4] the address of the first entry in the IDT
-                        ; [esp ] the return address
 
 extern interrupt_handler           ; the function sum_of_three is defined elsewhere
 outb:
@@ -23,11 +19,6 @@ inb:
     mov dx, [esp + 4]   ; move the address of the I/O port to the dx register
     in al, dx           ; read a byte from the I/O port and store it in the al register
     ret                 ; return the read byte
-
-load_idt:
-    mov eax, [esp+4]    ; load the address of the IDT into register eax
-    lgdt eax            ; load the IDT
-    ret                 ; return to the calling function
 
 %macro no_error_code_interrupt_handler 1
 global interrupt_handler_%1
