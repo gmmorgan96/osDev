@@ -1,3 +1,5 @@
+extern interrupt_handler           ; the function sum_of_three is defined elsewhere
+
 global outb             ; make the label outb visible outside this file
                         ; outb - send a byte to an I/O port
                         ; stack: [esp + 8] the data byte
@@ -7,8 +9,16 @@ global inb
                         ; inb - returns a byte from the given I/O port
                         ; stack: [esp + 4] The address of the I/O port
                         ; [esp ] The return address
+global load_idt
+    ; load_idt - Loads the interrupt descriptor table (IDT).
+    ; stack: [esp + 4] the address of the first
+    ; [esp ] the return address
 
-extern interrupt_handler           ; the function sum_of_three is defined elsewhere
+load_idt:
+    mov eax, [esp+4]    ; load the address of the IDT into register eax
+    lidt eax            ; load the IDT
+    ret                 ; return to the calling function
+
 outb:
     mov al, [esp + 8]   ; move the data to be sent into the al register
     mov dx, [esp + 4]   ; move the address of the I/O port into the dx register
