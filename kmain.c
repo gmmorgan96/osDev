@@ -207,7 +207,11 @@ void entry(){
     write(test, sizeof(test));
     print_f(test, sizeof(test));
     fb_move_cursor(80);
-    while(1);
+    unsigned char code;
+    while(1){
+        code = read_scan_code();
+        write(code, sizeof(code));
+    }
 }
 
 
