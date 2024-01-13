@@ -155,7 +155,9 @@ struct stack_state {
     unsigned int eflags;
 } __attribute__((packed));
 void interrupt_handler(struct cpu_state cpu, struct stack_state stack, unsigned int interrupt){
-    
+    struct cpu_state tst = cpu;
+    struct stack_state tst2 = stack;
+    unsigned int interrupt_test = interrupt;
 }
 
 
