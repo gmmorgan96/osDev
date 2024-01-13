@@ -13,10 +13,6 @@ global load_idt
 ; load_idt - Loads the interrupt descriptor table (IDT).
 ; stack: [esp + 4] the address of the first entry in the IDT
 ; [esp ] the return address
-load_idt:
-    mov eax, [esp+4] ; load the address of the IDT into register eax
-    lidt eax ; load the IDT
-    ret ; return to the calling function
 
 outb:
     mov al, [esp + 8]   ; move the data to be sent into the al register
@@ -61,3 +57,8 @@ common_interrupt_handler: ; the common parts of the generic interrupt handler
 
 no_error_code_interrupt_handler 0
 no_error_code_interrupt_handler 1 ; create handler for interrupt 1
+
+load_idt:
+    mov eax, [esp+4] ; load the address of the IDT into register eax
+    lidt eax ; load the IDT
+    ret ; return to the calling function
