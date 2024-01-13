@@ -19,7 +19,7 @@ inb:
     in al, dx           ; read a byte from the I/O port and store it in the al register
     ret                 ; return the read byte
 
-%macro no_error_code_interrupt_handler 1
+%macro no_error_code_interrupt_handler %1
 global interrupt_handler_%1
 interrupt_handler_%1:
     push dword 0                    ; push 0 as error code
@@ -41,3 +41,5 @@ common_interrupt_handler: ; the common parts of the generic interrupt handler
     ; restore the esp
     add esp, 8
     ; retur
+
+no_error_code_interrupt_handler 0
