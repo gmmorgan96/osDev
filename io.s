@@ -9,15 +9,6 @@ global inb
                         ; inb - returns a byte from the given I/O port
                         ; stack: [esp + 4] The address of the I/O port
                         ; [esp ] The return address
-global load_idt
-    ; load_idt - Loads the interrupt descriptor table (IDT).
-    ; stack: [esp + 4] the address of the first
-    ; [esp ] the return address
-
-load_idt:
-    mov eax, [esp+4]    ; load the address of the IDT into register eax
-    lidt eax            ; load the IDT
-    ret                 ; return to the calling function
 
 outb:
     mov al, [esp + 8]   ; move the data to be sent into the al register
