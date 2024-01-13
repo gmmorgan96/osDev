@@ -1,4 +1,8 @@
 global loader                   ; the entry symbol for ELF
+global load_idt
+    ; load_idt - Loads the interrupt descriptor table (IDT).
+    ; stack: [esp + 4] the address of the first
+    ; [esp ] the return address
 
 MAGIC_NUMBER equ 0x1BADB002     ; define the magic number constant
 FLAGS        equ 0x0            ; multiboot flags
@@ -21,10 +25,6 @@ loader:                         ; the loader label (defined as entry point in li
     ; call cls
     call entry ; call the function, the result will be in eax
 
-global load_idt
-    ; load_idt - Loads the interrupt descriptor table (IDT).
-    ; stack: [esp + 4] the address of the first
-    ; [esp ] the return address
 load_idt:
     mov eax, [esp+4]    ; load the address of the IDT into register eax
     lidt eax            ; load the IDT
