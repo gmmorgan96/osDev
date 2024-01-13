@@ -47,3 +47,7 @@ common_interrupt_handler: ; the common parts of the generic interrupt handler
     ; restore the esp
     add esp, 8
     ; retur
+
+no_error_code_interrupt_handler 0 ; create handler for interrupt 0
+no_error_code_interrupt_handler 1 ; create handler for interrupt 1
+error_code_handler 7 ; create handler for interrupt 7
