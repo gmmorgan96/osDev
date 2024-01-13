@@ -26,13 +26,6 @@ interrupt_handler_%1:
     jmp common_interrupt_handler    ; jump to the common handler
 %endmacro
 
-@ %macro error_code_interrupt_handler
-@ global interrupt_handler_%1
-@ interrupt_handler_%1:
-@     push dword %1                   ; push the interrupt number
-@     jmp common_interrupt_handler    ; jump to the common handler
-@ %endmacro
-
 common_interrupt_handler: ; the common parts of the generic interrupt handler
     ; save the registers
     push eax
@@ -47,7 +40,3 @@ common_interrupt_handler: ; the common parts of the generic interrupt handler
     ; restore the esp
     add esp, 8
     ; retur
-
-@ no_error_code_interrupt_handler_0 ; create handler for interrupt 0
-@ no_error_code_interrupt_handler 1 ; create handler for interrupt 1
-@ error_code_handler 7 ; create handler for interrupt 7
