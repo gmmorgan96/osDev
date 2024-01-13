@@ -210,7 +210,7 @@ void entry(){
     unsigned char code;
     while(1){
         code = read_scan_code();
-        write(code, sizeof(code));
+        write( (char) &code, sizeof(code));
     }
 }
 
