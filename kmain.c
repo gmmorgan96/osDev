@@ -1,6 +1,6 @@
 /* The C function */
-#define FB_GREEN 0
-#define FB_DARK_GREY 15
+#define FB_GREEN 2
+#define FB_DARK_GREY 7
 #include "io.h"
 /* The I/O ports */
 #define FB_COMMAND_PORT 0x3D4
