@@ -227,7 +227,7 @@ void entry(){
         code = read_scan_code();
         if (code){
             input(code);
-            print_f(code, sizeof(code));
+            print_f((char*) &code, sizeof(code));
         }
         
     }
