@@ -192,25 +192,31 @@ void interrupt_handler(){
     write(test, sizeof(test));
 }
 
-
+char *fb = (char *) 0x000B8000;
 // GET INPUT AND PRINT TO SCREEN
 void input(unsigned char code){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
-    char *fb = (char *) 0x000B8000;
+    
     if (code == 0x1E){
         code = 'a';
+        print_code(code);
+        fb += 0x00000002;
     }  
     if (code == 0x30){
         code = 'b';
+        print_code(code);
+        fb += 0x00000002;
     }
-    fb[0] = code;
-    fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
-    // fb += 0x00000002;
+    
+    
 
 }
 
-
+void print_code(unsigned char code){
+    fb[0] = code;
+    fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
+}
 
 void entry(){
     // fb_move_cursor(0);
