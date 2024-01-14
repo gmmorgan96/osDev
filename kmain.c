@@ -194,12 +194,9 @@ void interrupt_handler(){
 
 char *fb = (char *) 0x000B8000; 
 // GET INPUT AND PRINT TO SCREEN
-void input(){
+void input(unsigned char code){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
-    // 
-    unsigned char code;
-    code = read_scan_code();
     fb[0] = code;
     fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
     fb += 0x00000002;
@@ -221,16 +218,12 @@ void entry(){
     write(test, sizeof(test));
     print_f(test, sizeof(test));
     fb_move_cursor(80);
-    //unsigned char code;
+    unsigned char code;
     while(1){
-        // code = read_scan_code();
-        // if (code){
-        //     write( (char*) &code, sizeof(code));
-        // }
-        input();
+        code = read_scan_code();
+        if (code){
+            input( (char*) &code);
+        }
         
     }
 }
-
-
-
