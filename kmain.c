@@ -198,7 +198,7 @@ void input(unsigned char code){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
     char *fb = (char *) 0x000B8000;
-    if (code == '-'){
+    if (code == 12){
         code = 'A';
     }  
     fb[0] = code;
