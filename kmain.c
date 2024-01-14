@@ -198,9 +198,12 @@ void input(unsigned char code){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
     char *fb = (char *) 0x000B8000;
-    if (code == 12){
+    if (code == 9){
         code = 'A';
     }  
+    if (code == '9'){
+        code = 'B';
+    }
     fb[0] = code;
     fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
     // fb += 0x00000002;
