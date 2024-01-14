@@ -197,6 +197,10 @@ void input(){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
     // 
+    char *fb = (char *) 0x000B8000; 
+        fb[0] = "A";
+        fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
+        fb += 0x00000002;
 
 }
 
@@ -217,10 +221,11 @@ void entry(){
     fb_move_cursor(80);
     unsigned char code;
     while(1){
-        code = read_scan_code();
-        if (code){
-            write( (char*) &code, sizeof(code));
-        }
+        // code = read_scan_code();
+        // if (code){
+        //     write( (char*) &code, sizeof(code));
+        // }
+        input();
         
     }
 }
