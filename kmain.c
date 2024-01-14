@@ -192,6 +192,14 @@ void interrupt_handler(){
     write(test, sizeof(test));
 }
 
+// GET INPUT AND PRINT TO SCREEN
+void input(){
+    // blank char array... to keep command in place
+    // check for new incoming code... if code print to screen at buffer location
+    // 
+
+}
+
 
 
 void entry(){
@@ -210,7 +218,10 @@ void entry(){
     unsigned char code;
     while(1){
         code = read_scan_code();
-        write( (char*) &code, sizeof(code));
+        if (code){
+            write( (char*) &code, sizeof(code));
+        }
+        
     }
 }
 
