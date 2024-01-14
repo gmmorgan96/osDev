@@ -280,6 +280,7 @@ void input(unsigned char code){
         fb += 0x00000002;
     }
     
+    pic_acknowledge(0x20);
     
 
 }
