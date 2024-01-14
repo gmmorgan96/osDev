@@ -200,7 +200,7 @@ void input(){
     // 
     unsigned char code;
     code = read_scan_code();
-    fb[0] = (char*) &code;
+    fb[0] = code;
     fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
     fb += 0x00000002;
 
