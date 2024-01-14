@@ -223,7 +223,7 @@ void entry(){
     while(1){
         code = read_scan_code();
         if (code){
-            input( (char*) &code);
+            input(code);
         }
         
     }
