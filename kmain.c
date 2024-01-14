@@ -219,7 +219,7 @@ void entry(){
     write(test, sizeof(test));
     print_f(test, sizeof(test));
     fb_move_cursor(80);
-    unsigned char code;
+    //unsigned char code;
     while(1){
         // code = read_scan_code();
         // if (code){
