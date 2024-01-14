@@ -1,6 +1,6 @@
 /* The C function */
-#define FB_GREEN 2
-#define FB_DARK_GREY 7
+#define FB_GREEN 0
+#define FB_DARK_GREY 15
 #include "io.h"
 /* The I/O ports */
 #define FB_COMMAND_PORT 0x3D4
@@ -192,14 +192,15 @@ void interrupt_handler(){
     write(test, sizeof(test));
 }
 
-char *fb = (char *) 0x000B8000; 
+
 // GET INPUT AND PRINT TO SCREEN
 void input(unsigned char code){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
+    char *fb = (char *) 0x000B8000;         
     fb[0] = code;
     fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
-    fb += 0x00000002;
+    // fb += 0x00000002;
 
 }
 
@@ -222,7 +223,7 @@ void entry(){
     while(1){
         code = read_scan_code();
         if (code){
-            input(code);
+            input( (char*) &code);
         }
         
     }
