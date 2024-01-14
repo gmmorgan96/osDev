@@ -192,15 +192,17 @@ void interrupt_handler(){
     write(test, sizeof(test));
 }
 
+char *fb = (char *) 0x000B8000; 
 // GET INPUT AND PRINT TO SCREEN
 void input(){
     // blank char array... to keep command in place
     // check for new incoming code... if code print to screen at buffer location
     // 
-    char *fb = (char *) 0x000B8000; 
-        fb[0] = 'a';
-        fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
-        fb += 0x00000002;
+    unsigned char code;
+    code = read_scan_code();
+    fb[0] = (char*) &code;
+    fb[0 + 1] = ((FB_GREEN & 0x0F) << 4) | (FB_DARK_GREY & 0x0F);
+    fb += 0x00000002;
 
 }
 
