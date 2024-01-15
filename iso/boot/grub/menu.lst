@@ -1,6 +1,6 @@
 default=0
 timeout=0
 
-title GHOST OS v0.0.0.1
+title os
 kernel /boot/kernel.elf
 module /modules/program
