@@ -2,6 +2,7 @@
 #define FB_GREEN 0
 #define FB_DARK_GREY 15
 #include "io.h"
+#include "multiboot.h"
 /* The I/O ports */
 #define FB_COMMAND_PORT 0x3D4
 #define FB_DATA_PORT 0x3D5
@@ -285,9 +286,10 @@ void input(unsigned char code){
 
 }
 
+typedef void (*call_module_t)(void);
 
 
-void entry(){
+void entry(unsigned int ebx){
     // fb_move_cursor(0);
     // fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     // fb_move_cursor(1);
@@ -298,15 +300,20 @@ void entry(){
     cls();
     char test[] = "GHOST OS v0.0.0.1";
     write(test, sizeof(test));
-    print_f(test, sizeof(test));
-    fb_move_cursor(80);
-    unsigned char code;
-    while(1){
-        code = read_scan_code();
-        if (code){
-            input(code);
-            print_f((char*) &code, sizeof(code));
-        }
+    multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
+    unsigned int address_of_module = mbinfo->mods_addr;
+    call_module_t start_program = (call_module_t) address_of_module;
+    start_program();
+    // print_f(test, sizeof(test));
+    // fb_move_cursor(80);
+    // unsigned char code;
+    // while(1){
+    //     code = read_scan_code();
+    //     if (code){
+    //         input(code);
+    //         print_f((char*) &code, sizeof(code));
+    //     }
         
-    }
+    // }
+
 }
