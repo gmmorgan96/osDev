@@ -289,7 +289,7 @@ void input(unsigned char code){
 typedef void (*call_module_t)(void);
 
 
-void entry(unsigned int ebx){
+void entry(){
     // fb_move_cursor(0);
     // fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
     // fb_move_cursor(1);
