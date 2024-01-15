@@ -25,6 +25,16 @@ inb:
     in al, dx           ; read a byte from the I/O port and store it in the al register
     ret                 ; return the read byte
 
+global myprogram
+
+
+myprogram:
+    ; set eax to some distinguishable number, to read from the log afterwards
+    mov eax, 0xDEADBEEF
+    ; enter infinite loop, nothing more to do
+    ; $ means "beginning of line", ie. the same instruction
+    jmp $
+
 %macro no_error_code_interrupt_handler 1
 global interrupt_handler_%1
 interrupt_handler_%1:
