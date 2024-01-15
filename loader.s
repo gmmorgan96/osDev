@@ -1,9 +1,14 @@
 global loader                   ; the entry symbol for ELF
 
 ; MAGIC_NUMBER equ 0xBADB002     ; define the magic number constant
-MAGIC_NUMBER equ 0x1BADB002
-ALIGN_MODULES equ 0x00000001    ; tell GRUB to align modules
-FLAGS        equ 0x0            ; multiboot flags
+; MAGIC_NUMBER equ 0x1BADB002
+; ALIGN_MODULES equ 0x00000001    ; tell GRUB to align modules
+; FLAGS        equ 0x0            ; multiboot flags
+; CHECKSUM equ -(MAGIC_NUMBER + ALIGN_MODULES)
+
+MAGIC_NUMBER equ 0x1BADB002 ; define the magic number constant
+ALIGN_MODULES equ 0x00000001 ; tell GRUB to align modules
+; calculate the checksum (all options + checksum should equal 0)
 CHECKSUM equ -(MAGIC_NUMBER + ALIGN_MODULES)
                                 ; (magic number + checksum + flags should equal 0)
 KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
