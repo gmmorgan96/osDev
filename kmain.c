@@ -303,7 +303,6 @@ void entry(unsigned int ebx){
     multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
     unsigned int address_of_module = mbinfo->mods_addr;
     call_module_t start_program = (call_module_t) address_of_module;
-    UNUSED_ARGUMENT(start_program);
     // start_program();
     // print_f(test, sizeof(test));
     // fb_move_cursor(80);
