@@ -297,15 +297,15 @@ void entry(unsigned int ebx){
     // serial_configure_baud_rate(SERIAL_COM1_BASE, 2);
     // serial_configure_line(SERIAL_COM1_BASE);
     // serial_is_transmit_fifo_empty(SERIAL_COM1_BASE);
-    // cls();
-    // char test[] = "GHOST OS v0.0.0.1";
-    // write(test, sizeof(test));
+    cls();
+    char test[] = "GHOST OS v0.0.0.1";
+    write(test, sizeof(test));
     multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
     unsigned int address_of_module = mbinfo->mods_addr;
     call_module_t start_program = (call_module_t) address_of_module;
     start_program();
     // print_f(test, sizeof(test));
-    // fb_move_cursor(80);
+    fb_move_cursor(80);
     // unsigned char code;
     // while(1){
     //     code = read_scan_code();
@@ -315,5 +315,6 @@ void entry(unsigned int ebx){
     //     }
         
     // }
+    while(1);
 
 }
