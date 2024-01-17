@@ -308,9 +308,10 @@ void entry(unsigned int ebx){
     write((char* )address_of_module, sizeof(address_of_module));
     // cls();
     //write((char*) ebx, sizeof(ebx));
-    write((char*) address_of_module, sizeof(address_of_module));
-    call_module_t start_program = (call_module_t) address_of_module;
-    start_program();
+    // write((char*) address_of_module, sizeof(address_of_module));
+    // call_module_t start_program = (call_module_t) address_of_module;
+    // start_program();
+    myprogram();
     // print_f(test, sizeof(test));
     fb_move_cursor(80);
     // unsigned char code;
