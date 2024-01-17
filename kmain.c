@@ -301,7 +301,7 @@ void entry(unsigned int ebx){
     char test[] = "GHOST OS v0.0.0.1";
     write(test, sizeof(test));
     multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
-    print_f((char* )mbinfo->mods_count, sizeof(mbinfo->mods_count));
+    write((char* )mbinfo->mods_count, sizeof(mbinfo->mods_count));
     unsigned int address_of_module = mbinfo->mods_addr;
     cls();
     //write((char*) ebx, sizeof(ebx));
