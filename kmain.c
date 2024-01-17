@@ -303,7 +303,8 @@ void entry(unsigned int ebx){
     multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
     unsigned int address_of_module = mbinfo->mods_addr;
     cls();
-    write((char*) address_of_module, sizeof(address_of_module));
+    write((char*) ebx, sizeof(ebx));
+    //write((char*) address_of_module, sizeof(address_of_module));
     call_module_t start_program = (call_module_t) address_of_module;
     start_program();
     // print_f(test, sizeof(test));
