@@ -299,6 +299,7 @@ void entry(unsigned int ebx){
     // serial_is_transmit_fifo_empty(SERIAL_COM1_BASE);
     cls();
     char test[] = "GHOST OS v0.0.0.1";
+    cls();
     write(test, sizeof(test));
     multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
     write((char* )mbinfo->mods_count, sizeof(mbinfo->mods_count));
@@ -306,8 +307,8 @@ void entry(unsigned int ebx){
     // cls();
     //write((char*) ebx, sizeof(ebx));
     //write((char*) address_of_module, sizeof(address_of_module));
-    call_module_t start_program = (call_module_t) address_of_module;
-    start_program();
+    // call_module_t start_program = (call_module_t) address_of_module;
+    // start_program();
     // print_f(test, sizeof(test));
     fb_move_cursor(80);
     // unsigned char code;
